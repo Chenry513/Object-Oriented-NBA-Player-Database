@@ -5,6 +5,7 @@
 #include <cassert>  
 #include "Player.h"
 #include "json.hpp" 
+#include "sqlite3.h"
 using json = nlohmann::json;
 
 using namespace std;
@@ -15,6 +16,8 @@ private:
 	Player* data; // pinter to first array element of player objects 
 	int sz;		  // size of array
 public:
+	sqlite3 *db;  // SQLite database connection pointer
+    int rc;       // Return code for SQLite operations
 
 	//destrucor
 	~Database(){
@@ -671,33 +674,46 @@ public:
         }
     }
 
-	// Constructor that reads info from a JSON file
-	Database(): cap(100), sz(0) {
-        Player* new_data = new Player[cap];
-        data = new_data;
+	//Constructor for the database using sqlite queries
+	Database() : cap(100), sz(0), db(nullptr) {
+        data = new Player[cap];
 
-        ifstream inputstream("nba_players.json");
-        json j;
-        inputstream >> j;  // Deserialize the JSON data directly from the file
-
-        for (auto& element : j) {
-            string salary = to_string(element["salary"].get<unsigned int>()) + " USD";
-            unsigned int jerseyNumber = element["number"].get<unsigned int>();
-            unsigned int rookieYear = element["draft_year"].get<unsigned int>();
-
-            Player player(
-                element["name"].get<string>(),
-                element["team"].get<string>(),
-                element["position"].get<string>(),
-                salary,
-                jerseyNumber,
-                rookieYear
-            );
-
-            append(player);  // Append player to the database
+        // Open the SQLite database
+        rc = sqlite3_open("playerdata.db", &db);
+        if (rc != SQLITE_OK) {
+            std::cerr << "Can't open database: " << sqlite3_errmsg(db) << std::endl;
+            sqlite3_close(db);
+            return;
         }
 
-        inputstream.close();
+        // Prepare a SQL query to retrieve all players
+        const char* sql = "SELECT Name, Team, Position, Salary, JerseyNumber, RookieYear FROM Players;";
+        sqlite3_stmt *stmt;
+
+        rc = sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
+        if (rc != SQLITE_OK) {
+            std::cerr << "SQL error: " << sqlite3_errmsg(db) << std::endl;
+            sqlite3_close(db);
+            return;
+        }
+
+        // Execute the query and create Player objects from the results
+        while (sqlite3_step(stmt) == SQLITE_ROW) {
+            std::string name = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0));
+            std::string team = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1));
+            std::string position = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 2));
+            unsigned int salary = sqlite3_column_int(stmt, 3);
+            unsigned int jerseyNumber = sqlite3_column_int(stmt, 4);
+            unsigned int rookieYear = sqlite3_column_int(stmt, 5);
+
+            std::string salaryStr = std::to_string(salary) + " USD";
+            Player player(name, team, position, salaryStr, jerseyNumber, rookieYear);
+            append(player);
+        }
+
+        // Cleanup
+        sqlite3_finalize(stmt);
+        sqlite3_close(db);
     }
 };
 
