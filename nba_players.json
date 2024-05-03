@@ -1,0 +1,220 @@
+[
+    {
+        "name": "Kevin Durant",
+        "team": "Nets",
+        "position": "SF",
+        "salary": 26000000,
+        "number": 7,
+        "draft_year": 2007
+    },
+    {
+        "name": "Bradley Beal",
+        "team": "Wizards",
+        "position": "SG",
+        "salary": 22000000,
+        "number": 3,
+        "draft_year": 2012
+    },
+    {
+        "name": "Kyrie Irving",
+        "team": "Nets",
+        "position": "SG",
+        "salary": 26000000,
+        "number": 11,
+        "draft_year": 2011
+    },
+    {
+        "name": "Kawhi Leonard",
+        "team": "Clippers",
+        "position": "SF",
+        "salary": 32000000,
+        "number": 2,
+        "draft_year": 2011
+    },
+    {
+        "name": "Jayson Tatum",
+        "team": "Celtics",
+        "position": "SF",
+        "salary": 28000000,
+        "number": 0,
+        "draft_year": 2017
+    },
+    {
+        "name": "Zion Williamson",
+        "team": "Pelicans",
+        "position": "PF",
+        "salary": 10000000,
+        "number": 1,
+        "draft_year": 2019
+    },
+    {
+        "name": "Mike Conley",
+        "team": "Jazz",
+        "position": "PG",
+        "salary": 24000000,
+        "number": 10,
+        "draft_year": 2007
+    },
+    {
+        "name": "James Harden",
+        "team": "Nets",
+        "position": "PG",
+        "salary": 41000000,
+        "number": 13,
+        "draft_year": 2009
+    },
+    {
+        "name": "Zach LaVine",
+        "team": "Bulls",
+        "position": "SG",
+        "salary": 20000000,
+        "number": 8,
+        "draft_year": 2014
+    },
+    {
+        "name": "Donovan Mitchell",
+        "team": "Jazz",
+        "position": "SG",
+        "salary": 5000000,
+        "number": 45,
+        "draft_year": 2017
+    },
+    {
+        "name": "Julius Randle",
+        "team": "Knicks",
+        "position": "PF",
+        "salary": 19000000,
+        "number": 30,
+        "draft_year": 2014
+    },
+    {
+        "name": "Nikola Vucevic",
+        "team": "Bulls",
+        "position": "C",
+        "salary": 26000000,
+        "number": 9,
+        "draft_year": 2011
+    },
+    {
+        "name": "Devin Booker",
+        "team": "Suns",
+        "position": "SG",
+        "salary": 28000000,
+        "number": 1,
+        "draft_year": 2015
+    },
+    {
+        "name": "Anthony Davis",
+        "team": "Lakers",
+        "position": "PF",
+        "salary": 28000000,
+        "number": 3,
+        "draft_year": 2012
+    },
+    {
+        "name": "Joel Embiid",
+        "team": "Sixers",
+        "position": "C",
+        "salary": 32000000,
+        "number": 21,
+        "draft_year": 2016
+    },
+    {
+        "name": "Lebron James",
+        "team": "Lakers",
+        "position": "SF",
+        "salary": 32000000,
+        "number": 23,
+        "draft_year": 2003
+    },
+    {
+        "name": "Giannis Antetokounmpo",
+        "team": "Buck",
+        "position": "PF",
+        "salary": 30000000,
+        "number": 33,
+        "draft_year": 2013
+    },
+    {
+        "name": "Stephen Curry",
+        "team": "Warriors",
+        "position": "PG",
+        "salary": 420000000,
+        "number": 30,
+        "draft_year": 2009
+    },
+    {
+        "name": "Luka Doncic",
+        "team": "Mavericks",
+        "position": "PG",
+        "salary": 100000000,
+        "number": 77,
+        "draft_year": 2018
+    },
+    {
+        "name": "Nikola Jokic",
+        "team": "Nuggets",
+        "position": "C",
+        "salary": 300000000,
+        "number": 15,
+        "draft_year": 2012
+    },
+    {
+        "name": "Jaylen Brown",
+        "team": "Celtics",
+        "position": "SG",
+        "salary": 280000000,
+        "number": 7,
+        "draft_year": 2016
+    },
+    {
+        "name": "Paul George",
+        "team": "Clippers",
+        "position": "SG",
+        "salary": 280000000,
+        "number": 13,
+        "draft_year": 2010
+    },
+    {
+        "name": "Rudy Gobert",
+        "team": "Jazz",
+        "position": "C",
+        "salary": 400000000,
+        "number": 27,
+        "draft_year": 2013
+    },
+    {
+        "name": "Damian Lillard",
+        "team": "Blazers",
+        "position": "PG",
+        "salary": 350000000,
+        "number": 0,
+        "draft_year": 2012
+    },
+    {
+        "name": "Domantas Sabonis",
+        "team": "Pacers",
+        "position": "PF",
+        "salary": 200000000,
+        "number": 11,
+        "draft_year": 2016
+    },
+    {
+        "name": "Ben Simmons",
+        "team": "Sixers",
+        "position": "PG",
+        "salary": 300000000,
+        "number": 25,
+        "draft_year": 2017
+    },
+    {
+        "name": "Trae Young",
+        "team": "Hawks",
+        "position": "PG",
+        "salary": 300000000,
+        "number": 11,
+        "draft_year": 2018
+    }
+    
+    
+]

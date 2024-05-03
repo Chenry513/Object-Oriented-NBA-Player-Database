@@ -4,6 +4,8 @@
 #include <algorithm>    
 #include <cassert>  
 #include "Player.h"
+#include "json.hpp" 
+using json = nlohmann::json;
 
 using namespace std;
 
@@ -669,48 +671,33 @@ public:
         }
     }
 
-	//constuctor that also reads info from a file and stores the inforamtion in our database object
-	Database():
-	cap(100),sz(0){
-		string readbuffer;
-		Player* new_data = new Player[cap];
+	// Constructor that reads info from a JSON file
+	Database(): cap(100), sz(0) {
+        Player* new_data = new Player[cap];
+        data = new_data;
 
-		data = new_data;
-		ifstream inputstream;
-		inputstream.open("database.txt");
-		Player player;
-		int j = 0;
-		while(inputstream.peek() != EOF){
-			getline(inputstream, readbuffer);
-						
-			if(j == 0){
-				player.set_player(readbuffer);
-				j++;
-			}
-			else if(j == 1){
-				player.set_team(readbuffer);
-				j++;
-			}
-			else if(j == 2){
-				player.set_pos(readbuffer);
-				j++;
-			}
-			else if(j == 3){
-				player.set_sal(readbuffer);
-				j++;
-			}
-			else if(j == 4){
-				player.set_jersey(stoul(readbuffer,nullptr,0));
-				j++;
-			}
-			else if(j == 5){
-				player.set_rookie(stoul(readbuffer,nullptr,0));
-				j = 0;
-				append(player);
-			}			
-		}
-		inputstream.close();
-	}
+        ifstream inputstream("nba_players.json");
+        json j;
+        inputstream >> j;  // Deserialize the JSON data directly from the file
 
+        for (auto& element : j) {
+            string salary = to_string(element["salary"].get<unsigned int>()) + " USD";
+            unsigned int jerseyNumber = element["number"].get<unsigned int>();
+            unsigned int rookieYear = element["draft_year"].get<unsigned int>();
+
+            Player player(
+                element["name"].get<string>(),
+                element["team"].get<string>(),
+                element["position"].get<string>(),
+                salary,
+                jerseyNumber,
+                rookieYear
+            );
+
+            append(player);  // Append player to the database
+        }
+
+        inputstream.close();
+    }
 };
 
