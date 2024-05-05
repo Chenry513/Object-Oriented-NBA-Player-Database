@@ -14,6 +14,10 @@ class Menu {
     string name,team,pos,sal;
     int jersey, rook;
 public:
+    //constructor
+    Menu() {
+        data.initializeDatabase(); // Explicit call to initialize the database
+    }
 
     //Displaying the main menu and prompts user to enter a valid option
     void input() {
@@ -296,7 +300,7 @@ public:
                     cout<<"Enter the name of your Player you want deleted: ";
                     getline(cin, name);
                     getline(cin, name);
-                    data.remove_playersub(name);
+                    data.remove_playersub(name); //fixed
                     cout<<"\nPlayer removed.\n";
                     
                     break;
@@ -314,7 +318,7 @@ public:
                     cout<<"Enter the position of your Player you want deleted: ";
                     getline(cin, pos);
                     getline(cin, pos);
-                    data.remove_possub(pos);
+                    data.remove_pos(pos);
                     cout<<"\nPlayers that play this position removed.\n";
                     
                     break;
